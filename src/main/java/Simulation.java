@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Simulation {
     private final Vehicle vehicle;
 
@@ -67,15 +69,17 @@ public class Simulation {
         }
         printString(vehicle.checkFinalStatus());
         if (status != null) {
-            return status.getStatus();
+            return vehicle.Flying;
         }
         return -1;
     }
 
     public static void main(String[] args) {
-        // create a new Simulation object with a random starting altitude
-        // create a new BurnInputStream
-        // pass the new BurnInputStream to the runSimulation method
+        Random random = new Random();
+        int randNum = random.nextInt(10000);
+        Simulation newSim = new Simulation(new Vehicle(randNum));
+        BurnInputStream bIS = new BurnInputStream();
+        newSim.runSimulation(bIS);
     }
 
 }
